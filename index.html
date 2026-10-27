@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3525cd"><meta name="apple-mobile-web-app-capable" content="yes">
+<title>One for All</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8ff;--sf:#fff;--sf2:#eaedff;--tx:#131b2e;--tx2:#464555;--ol:#c7c4d8;--p:#3525cd;--pc:#4f46e5;--onp:#fff;--a:#fd761a;--sh:0 4px 18px rgba(53,37,205,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+:root[data-t=dark]{--bg:#0f1424;--sf:#1a2136;--sf2:#262e48;--tx:#eef0ff;--tx2:#b9bbd3;--ol:#3a4262;--p:#c3c0ff;--pc:#c3c0ff;--onp:#0f0069;--sh:0 4px 18px rgba(0,0,0,.4)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+body{min-height:100vh;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+#app{max-width:560px;margin:0 auto;padding:0 18px}
+h1,h2,h3,p{margin:0}
+.top{display:flex;align-items:center;gap:12px;padding:16px 0}
+.top h1{font-size:22px;font-weight:800;letter-spacing:-.02em;flex:1}
+.ib{width:48px;height:48px;border-radius:16px;background:var(--sf);box-shadow:var(--sh);font-size:20px}
+input.s{width:100%;height:52px;border-radius:26px;border:1px solid var(--ol);background:var(--sf);padding:0 20px}
+.sec{font-size:20px;font-weight:800;margin:22px 0 10px;letter-spacing:-.02em}
+.rec{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.chip{flex:none;padding:12px 18px;border-radius:24px;background:var(--sf);box-shadow:var(--sh);font-weight:700;min-height:48px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{position:relative;text-align:left;background:var(--sf);border-radius:26px;padding:18px;box-shadow:var(--sh);min-height:170px;display:flex;flex-direction:column;gap:6px}
+.card .ic{width:52px;height:52px;border-radius:16px;background:var(--sf2);display:grid;place-items:center;font-size:26px}
+.card h3{font-size:18px;font-weight:800;margin-top:auto;letter-spacing:-.02em}
+.card p{font-size:13px;color:var(--tx2)}
+.card .soon{font-size:11px;font-weight:700;color:var(--a)}
+.star{position:absolute;top:10px;right:10px;width:44px;height:44px;font-size:22px;color:var(--a)}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 40%)}
+.nav div{display:flex;width:100%;max-width:520px;background:var(--sf);border-radius:30px;padding:6px;box-shadow:var(--sh)}
+.nav button{flex:1;height:56px;border-radius:24px;font-weight:700;font-size:13px;color:var(--tx2)}
+.nav button.on{background:var(--sf2);color:var(--p)}
+.btn{width:100%;height:60px;border-radius:30px;background:var(--p);color:var(--onp);font-weight:800;font-size:18px;box-shadow:var(--sh)}
+.btn.o{background:var(--sf);color:var(--p);border:2px solid var(--p);box-shadow:none}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{min-height:48px;min-width:56px;padding:0 16px;border-radius:24px;background:var(--sf);border:1px solid var(--ol);font-weight:700}
+.seg button.on{background:var(--p);color:var(--onp);border-color:var(--p)}
+.lbl{font-size:13px;font-weight:700;color:var(--tx2);margin:16px 0 8px}
+.dice{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:26px 0;min-height:200px;align-items:center}
+.d{width:84px;height:84px;border-radius:24px;background:var(--sf);box-shadow:var(--sh),inset 0 -6px 0 var(--sf2);display:grid;place-items:center;font-size:36px;font-weight:800;color:var(--p)}
+.d.big{width:120px;height:120px;font-size:52px;border-radius:32px}
+.rolling .d{animation:sh .12s infinite}
+@keyframes sh{0%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-6px)}100%{transform:rotate(-8deg)}}
+.tot{text-align:center;font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.tot small{display:block;font-size:13px;color:var(--tx2);font-weight:700;letter-spacing:0;margin-top:6px}
+.hist{margin-top:14px;display:grid;gap:6px;font-size:14px;color:var(--tx2)}
+.hist div{background:var(--sf);border-radius:14px;padding:10px 14px}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.team{border-radius:28px;padding:16px 10px;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;gap:10px}
+.team input.n{width:100%;background:rgba(255,255,255,.2);border:0;border-radius:14px;height:44px;text-align:center;color:#fff;font-weight:800;font-size:16px}
+.team .sc{font-size:clamp(72px,26vw,140px);font-weight:800;line-height:1;letter-spacing:-.04em}
+.team .pm{display:flex;gap:10px;width:100%}
+.team .pm button{flex:1;height:64px;border-radius:20px;background:rgba(255,255,255,.22);color:#fff;font-size:30px;font-weight:800}
+.team input[type=color]{width:48px;height:32px;border:0;border-radius:10px;padding:0;background:none}
+.tm{font-size:34px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums}
+.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}
+.item{background:var(--sf);border-radius:20px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--sh);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.item b{font-size:20px}.item span{font-size:13px;color:var(--tx2)}
+.tg{display:flex;justify-content:space-between;align-items:center;background:var(--sf);border-radius:20px;padding:16px 18px;margin-bottom:10px;font-weight:700;min-height:64px;width:100%}
+.sw{width:52px;height:30px;border-radius:15px;background:var(--ol);position:relative;flex:none}
+.sw:after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}
+.on .sw{background:var(--p)}.on .sw:after{left:25px}
+.empty{text-align:center;color:var(--tx2);padding:40px 10px}
+#toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:12px 20px;border-radius:24px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.s{opacity:1}
+:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.rolling .d{animation:none}}
+</style></head><body>
+<div id="app"></div><div id="toast"></div>
+<script>
+const TOOLS=[
+{id:'dadu',n:'Dadu Digital',d:'Lempar acak D6, D12, D20',i:'🎲',ok:1},
+{id:'skor',n:'Papan Skor',d:'Catat skor futsal, basket, dll',i:'🏆',ok:1},
+{id:'koin',n:'Lempar Koin',d:'Kepala atau ekor sekejap',i:'🪙'},
+{id:'nama',n:'Pengacak Nama',d:'Undian dan arisan praktis',i:'🔀'},
+{id:'roda',n:'Roda Putar',d:'Putar keputusan acak',i:'🎡'},
+{id:'timer',n:'Timer & Stopwatch',d:'Hitung mundur presisi',i:'⏱️'},
+{id:'hitung',n:'Penghitung',d:'Tally zikir, antrean, hitung cepat',i:'➕'}];
+let st={fav:[],recent:[],hist:[],set:{dark:null,vib:true,snd:true,wake:true}};
+try{const x=JSON.parse(localStorage.getItem('ofa'));if(x){st={...st,...x,set:{...st.set,...x.set}}}}catch(e){}
+const save=()=>{try{localStorage.setItem('ofa',JSON.stringify(st))}catch(e){}};
+let view='home',q='';
+let dc={n:2,t:6,vals:[],hist:[],rolling:false};
+let sc={a:0,b:0,na:'Tim A',nb:'Tim B',ca:'#3525cd',cb:'#fd761a',sport:'Futsal',t:0,run:false};
+let tI=null,wl=null,ac=null;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.className='s';setTimeout(()=>t.className='',1800)}
+function vib(p){if(st.set.vib&&navigator.vibrate)navigator.vibrate(p||25)}
+function beep(f){if(!st.set.snd)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f||520;g.gain.value=.08;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.08)}catch(e){}}
+function theme(){const d=st.set.dark===null?matchMedia('(prefers-color-scheme:dark)').matches:st.set.dark;document.documentElement.dataset.t=d?'dark':'light'}
+function go(v){view=v;if(TOOLS.some(t=>t.id===v&&t.ok)){st.recent=[v,...st.recent.filter(x=>x!==v)].slice(0,5);save()}
+ if(v==='skor')wake();else rel();render();scrollTo(0,0)}
+async function wake(){if(st.set.wake&&'wakeLock'in navigator){try{wl=await navigator.wakeLock.request('screen')}catch(e){}}}
+function rel(){if(wl){wl.release().catch(()=>{});wl=null}}
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function nav(){const t=[['home','🏠','Beranda'],['fav','⭐','Favorit'],['set','⚙️','Pengaturan']];
+ return `<div class="nav"><div>${t.map(x=>`<button data-go="${x[0]}" class="${view===x[0]?'on':''}">${x[1]}<br>${x[2]}</button>`).join('')}</div></div>`}
+function card(t){const f=st.fav.includes(t.id);
+ return `<div class="card" ${t.ok?'':'style="opacity:.75"'}><button class="star" data-fav="${t.id}" aria-label="Favorit">${f?'★':'☆'}</button><div class="ic">${t.i}</div><h3>${t.n}</h3><p>${t.d}</p>${t.ok?'':'<span class="soon">Segera hadir</span>'}<button style="position:absolute;inset:0;border-radius:26px" data-tool="${t.id}" aria-label="Buka ${t.n}"></button></div>`}
+function head(title,star){return `<div class="top"><button class="ib" data-go="home" aria-label="Kembali">←</button><h1>${title}</h1>${star?`<button class="ib" data-fav="${star}" aria-label="Favorit" style="color:var(--a)">${st.fav.includes(star)?'★':'☆'}</button>`:''}</div>`}
+function vHome(){const l=TOOLS.filter(t=>t.n.toLowerCase().includes(q.toLowerCase()));
+ const r=st.recent.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
+ return `<div class="top"><h1>One for All</h1></div><input class="s" id="q" placeholder="Cari alat..." value="${esc(q)}">
+ ${r.length&&!q?`<h2 class="sec">Terakhir dipakai</h2><div class="rec">${r.map(t=>`<button class="chip" data-tool="${t.id}">${t.i} ${t.n}</button>`).join('')}</div>`:''}
+ <h2 class="sec">Semua alat</h2><div class="grid">${l.map(card).join('')||''}</div>${l.length?'':'<p class="empty">Tidak ada alat yang cocok.</p>'}`}
+function vFav(){const l=TOOLS.filter(t=>st.fav.includes(t.id));
+ return `<div class="top"><h1>Favorit</h1></div>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<p class="empty">Belum ada favorit. Ketuk bintang pada alat untuk menambahkannya.</p>'}`}
+function vDadu(){const v=dc.vals,tot=v.reduce((a,b)=>a+b,0);
+ return head('Dadu Digital','dadu')+`<div class="lbl">Jumlah dadu</div><div class="seg">${[1,2,3,4,5,6].map(n=>`<button data-n="${n}" class="${dc.n===n?'on':''}">${n}</button>`).join('')}</div>
+ <div class="lbl">Jenis dadu</div><div class="seg">${[6,12,20].map(n=>`<button data-t="${n}" class="${dc.t===n?'on':''}">D${n}</button>`).join('')}</div>
+ <div class="dice ${dc.rolling?'rolling':''}" aria-live="polite">${v.length?v.map(x=>`<div class="d ${v.length===1?'big':''}">${x}</div>`).join(''):'<p class="empty">Ketuk Lempar atau goyangkan HP.</p>'}</div>
+ ${v.length?`<div class="tot">${tot}<small>total</small></div>`:''}
+ <div style="height:18px"></div><button class="btn" data-act="roll">Lempar</button>
+ <div class="hist">${dc.hist.map(h=>`<div>${h}</div>`).join('')}</div>`}
+function roll(){if(dc.rolling)return;dc.rolling=true;vib([40,30,40]);beep(420);
+ const r=()=>Array.from({length:dc.n},()=>1+Math.floor(Math.random()*dc.t));
+ let k=0;const iv=setInterval(()=>{dc.vals=r();render();if(++k>=6){clearInterval(iv);
+  const crypto_=window.crypto;const f=Array.from({length:dc.n},()=>{const a=new Uint32Array(1);crypto_.getRandomValues(a);return 1+a[0]%dc.t});
+  dc.vals=f;dc.rolling=false;dc.hist=[`${dc.n}×D${dc.t}: ${f.join(' + ')} = ${f.reduce((a,b)=>a+b,0)}`,...dc.hist].slice(0,8);vib(60);beep(660);render()}},100)}
+let last=0,shakeOn=false;
+async function shake(){if(shakeOn)return;try{if(typeof DeviceMotionEvent!=='undefined'&&DeviceMotionEvent.requestPermission){if(await DeviceMotionEvent.requestPermission()!=='granted')return}
+ shakeOn=true;addEventListener('devicemotion',e=>{if(view!=='dadu')return;const a=e.accelerationIncludingGravity;if(!a)return;const m=Math.abs(a.x)+Math.abs(a.y)+Math.abs(a.z);const n=Date.now();if(m>38&&n-last>1200){last=n;roll()}})}catch(e){}}
+function vSkor(){const tm=fmt(sc.t);
+ return head('Papan Skor','skor')+`<div class="seg">${['Futsal','Basket','Badminton','Voli','Umum'].map(s=>`<button data-sp="${s}" class="${sc.sport===s?'on':''}">${s}</button>`).join('')}</div>
+ <div class="tm" style="margin:14px 0" id="tm">${tm}</div>
+ <div class="row"><button class="btn o" style="height:52px" data-act="tim">${sc.run?'Jeda':'Mulai'}</button><button class="btn o" style="height:52px" data-act="rst">Reset</button></div>
+ <div class="teams">${['a','b'].map(k=>`<div class="team" style="background:${sc['c'+k]}"><input class="n" data-n="${k}" value="${esc(sc['n'+k])}" aria-label="Nama tim"><div class="sc">${sc[k]}</div><div class="pm"><button data-sc="${k}" data-d="-1" aria-label="Kurang">−</button><button data-sc="${k}" data-d="1" aria-label="Tambah">+</button></div><input type="color" data-c="${k}" value="${sc['c'+k]}" aria-label="Warna tim"></div>`).join('')}</div>
+ <div style="height:18px"></div><div class="row"><button class="btn" data-act="sv">Simpan pertandingan</button><button class="btn o" data-go="riw">Riwayat</button></div>
+ ${wl?'<p class="empty" style="padding:14px">Layar tetap menyala</p>':''}`}
+function vRiw(){return head('Riwayat')+(st.hist.length?st.hist.map((h,i)=>`<div class="item"><div><b>${esc(h.na)} ${h.a} – ${h.b} ${esc(h.nb)}</b><br><span>${esc(h.sport)} · ${h.d} · ${fmt(h.t)}</span><br><span>${h.a===h.b?'Seri':'Menang: '+esc(h.a>h.b?h.na:h.nb)}</span></div><button class="ib" data-del="${i}" aria-label="Hapus">🗑</button></div>`).join(''):'<p class="empty">Belum ada pertandingan tersimpan. Simpan dari Papan Skor.</p>')}
+function vSet(){const d=document.documentElement.dataset.t==='dark';
+ const T=(k,l,on)=>`<button class="tg ${on?'on':''}" data-set="${k}">${l}<span class="sw"></span></button>`;
+ return `<div class="top"><h1>Pengaturan</h1></div>${T('dark','Mode gelap',d)}${T('vib','Getar',st.set.vib)}${T('snd','Suara',st.set.snd)}${T('wake','Layar tetap menyala (Papan Skor)',st.set.wake)}
+ <p class="empty" style="padding:14px">Bahasa: Indonesia</p>`}
+function render(){const V={home:vHome,fav:vFav,set:vSet,dadu:vDadu,skor:vSkor,riw:vRiw};
+ const a=document.activeElement,id=a&&a.id;$('#app').innerHTML=V[view]()+(['home','fav','set'].includes(view)?nav():'');
+ if(id==='q'){const e=$('#q');e.focus();e.setSelectionRange(q.length,q.length)}}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const D=t.dataset;
+ if(D.go)return go(D.go);
+ if(D.tool){const tl=TOOLS.find(x=>x.id===D.tool);return tl.ok?go(D.tool):toast(tl.n+' segera hadir')}
+ if(D.fav){const i=st.fav.indexOf(D.fav);i<0?st.fav.push(D.fav):st.fav.splice(i,1);save();vib(15);return render()}
+ if(D.n&&view==='dadu'){dc.n=+D.n;dc.vals=[];return render()}
+ if(D.t){dc.t=+D.t;dc.vals=[];return render()}
+ if(D.act==='roll'){shake();return roll()}
+ if(D.sp){sc.sport=D.sp;return render()}
+ if(D.sc){const k=D.sc;sc[k]=Math.max(0,sc[k]+ +D.d);vib(20);beep(+D.d>0?600:360);return render()}
+ if(D.act==='tim'){sc.run=!sc.run;clearInterval(tI);if(sc.run)tI=setInterval(()=>{sc.t++;const m=$('#tm');if(m)m.textContent=fmt(sc.t)},1000);return render()}
+ if(D.act==='rst'){clearInterval(tI);sc={...sc,a:0,b:0,t:0,run:false};return render()}
+ if(D.act==='sv'){if(!sc.a&&!sc.b&&!sc.t)return toast('Belum ada skor untuk disimpan');
+  st.hist.unshift({na:sc.na,nb:sc.nb,a:sc.a,b:sc.b,sport:sc.sport,t:sc.t,d:new Date().toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})});save();return toast('Pertandingan tersimpan')}
+ if(D.del){st.hist.splice(+D.del,1);save();return render()}
+ if(D.set){if(D.set==='dark')st.set.dark=document.documentElement.dataset.t!=='dark';else st.set[D.set]=!st.set[D.set];save();theme();return render()}});
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.id==='q'){q=t.value;return render()}
+ if(t.dataset.n&&t.tagName==='INPUT'){sc['n'+t.dataset.n]=t.value}
+ if(t.dataset.c){sc['c'+t.dataset.c]=t.value;t.closest('.team').style.background=t.value}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&view==='skor')wake()});
+theme();render();shake();
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
+</script></body></html>
