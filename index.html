@@ -5,6 +5,7 @@
 <title>One for All</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet">
 <style>
 :root{--bg:#faf8ff;--sf:#fff;--sf2:#eaedff;--sf3:#f2f3ff;--tx:#131b2e;--tx2:#464555;--ol:#c7c4d8;--bd:#e2e8f0;--p:#3525cd;--pc:#4f46e5;--onp:#fff;--a:#fd761a;--a2:#ffdbca;--m:#6ffbbe;--er:#ba1a1a;--er2:#ffdad6;--dk:#283044;
 --sh:0 4px 16px -2px rgba(15,23,42,.06),0 2px 6px -1px rgba(15,23,42,.04);--sh2:0 12px 32px -4px rgba(79,70,229,.14),0 4px 12px -2px rgba(15,23,42,.06);--glow:0 8px 24px -2px rgba(79,70,229,.35);
@@ -14,91 +15,99 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);font-size:16px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums}
 body{min-height:100vh;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
-button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;transition:transform .1s}button:active{transform:scale(.97)}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;transition:transform .1s;display:inline-flex;align-items:center;justify-content:center;gap:6px}button:active{transform:scale(.97)}
+.ms{font-family:'Material Symbols Outlined';font-weight:400;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-feature-settings:'liga';font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;flex:none;vertical-align:middle;user-select:none}
+.ms.f,.on>.ms,button.on .ms{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+.ms.s{font-size:18px}.ms.xs{font-size:16px}.ms.l{font-size:28px}
+html:not(.icf) .ms{visibility:hidden}
 #app{max-width:560px;margin:0 auto;padding:0 20px}
 h1,h2,h3,p{margin:0}
 .top{display:flex;align-items:center;gap:12px;padding:14px 0}
-.top img{width:44px;height:44px;border-radius:14px}
-.top .tt{flex:1;min-width:0}.top h1{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}.top small{font-size:.8rem;color:var(--tx2);font-weight:500}
-.ib{width:48px;height:48px;border-radius:24px;background:var(--sf);border:1px solid var(--bd);font-size:1.2rem;display:grid;place-items:center;flex:none}
-.ib.pr{background:var(--p);color:var(--onp);border:0}
-.srch{position:relative}.srch span{position:absolute;left:18px;top:14px;font-size:1.1rem}
-input.s{width:100%;height:52px;border-radius:26px;border:1.5px solid var(--bd);background:var(--sf);padding:0 20px 0 48px;box-shadow:var(--sh)}
+.top img{width:44px;height:44px;border-radius:14px;flex:none}
+.top .tt{flex:1;min-width:0}.top h1{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;line-height:1.2}.top small{font-size:.8rem;color:var(--tx2);font-weight:500;display:block}
+.ib{width:48px;height:48px;border-radius:24px;background:var(--sf);border:1px solid var(--bd);flex:none}
+.ib.pl{background:none;border:0;width:40px;margin-right:-4px}
+.ib.pr{background:var(--p);color:var(--onp);border:0;width:40px;height:40px}
+.srch{position:relative}.srch>.ms{position:absolute;left:16px;top:14px;color:var(--p)}.srch .cl{position:absolute;right:4px;top:2px;width:48px;height:48px;color:var(--tx2)}
+input.s{width:100%;height:52px;border-radius:26px;border:1.5px solid var(--bd);background:var(--sf);padding:0 52px 0 48px;box-shadow:var(--sh)}
 input:focus{outline:0;border-color:var(--pc);box-shadow:0 0 0 4px rgba(79,70,229,.14)}
 .sh{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px}
-.sec{font-size:1.15rem;font-weight:800;letter-spacing:-.02em}.sh small{font-size:.7rem;font-weight:700;color:var(--tx2);letter-spacing:.06em}
+.sec{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}.sec .ms{color:var(--p)}.sh small{font-size:.7rem;font-weight:600;color:var(--tx2);letter-spacing:.1em}
 .big2{font-size:1.9rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}.sub{font-size:.85rem;color:var(--tx2);margin-top:2px}
-.pill{display:inline-block;padding:3px 11px;border-radius:12px;background:var(--sf2);color:var(--p);font-size:.7rem;font-weight:700;letter-spacing:.03em}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:12px;background:var(--sf2);color:var(--p);font-size:.7rem;font-weight:700;letter-spacing:.03em}
 .pill.g{background:var(--m);color:#002113}.pill.o{background:var(--a2);color:#5c2400}.pill.r{background:var(--er2);color:var(--er)}
 .rec{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}.rec::-webkit-scrollbar{display:none}
-.chip{flex:none;display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:30px;background:var(--sf);box-shadow:var(--sh);min-height:52px;text-align:left}
-.chip b{display:block;font-size:.85rem;font-weight:700}.chip small{font-size:.72rem;color:var(--tx2)}
-.sq{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;flex:none}
+.chip{flex:none;display:flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border-radius:30px;background:var(--sf);box-shadow:var(--sh);min-height:56px;text-align:left;justify-content:flex-start}
+.chip b{display:block;font-size:.9rem;font-weight:700}.chip small{font-size:.75rem;color:var(--tx2);display:block}
+.sq{width:40px;height:40px;border-radius:5px;display:grid;place-items:center;flex:none}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.card{position:relative;text-align:left;background:var(--sf);border:1px solid var(--bd);border-radius:28px;padding:18px;box-shadow:var(--sh);min-height:210px;display:flex;flex-direction:column;gap:4px}
-.card .sq{width:52px;height:52px;border-radius:14px;font-size:1.6rem;margin-bottom:auto}
-.card h3{font-size:1.1rem;font-weight:800;letter-spacing:-.02em;margin-top:14px;line-height:1.2}
+.card{position:relative;text-align:left;background:var(--sf);border:1px solid var(--bd);border-radius:28px;padding:20px;box-shadow:var(--sh);min-height:210px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px}
+.card .sq{width:56px;height:56px;margin-bottom:auto}.card .sq .ms{font-size:28px}
+.card h3{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;margin-top:14px;line-height:1.25}
 .card p{font-size:.78rem;color:var(--tx2);line-height:1.35}
 .card .ft{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:var(--ol)}
-.card.w{grid-column:1/-1;min-height:0;flex-direction:row;align-items:center;gap:14px;padding:16px 18px}.card.w .sq{margin:0}.card.w h3{margin:0}.card.w>div{flex:1}
-.star{position:absolute;top:10px;right:10px;width:48px;height:48px;font-size:1.3rem;color:var(--a);z-index:2}
+.card.w{grid-column:1/-1;min-height:0;flex-direction:row;align-items:center;gap:16px;padding:18px 20px}.card.w .sq{margin:0}.card.w h3{margin:0}.card.w>div{flex:1}
+.star{position:absolute;top:12px;right:12px;width:48px;height:48px;color:var(--a);z-index:2}
+.star.off{color:var(--ol)}
 .cover{position:absolute;inset:0;border-radius:28px}
 .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(98px + env(safe-area-inset-bottom,0px));width:calc(100% - 40px);max-width:520px;background:var(--dk);color:#fff;border-radius:30px;padding:8px 8px 8px 18px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh2);z-index:5}
-.dock .dot{width:10px;height:10px;border-radius:5px;background:var(--a)}.dock b{font-size:.85rem;flex:1;white-space:nowrap}.dock small{background:rgba(255,255,255,.15);padding:2px 8px;border-radius:10px;font-size:.7rem;margin-left:6px}
-.dock button{width:48px;height:48px;border-radius:24px;background:rgba(255,255,255,.14);font-size:1.15rem;color:#fff}
+.dock .dot{width:10px;height:10px;border-radius:5px;background:var(--a)}.dock b{font-size:.85rem;flex:1;white-space:nowrap;font-weight:600}.dock small{background:rgba(255,255,255,.15);padding:2px 8px;border-radius:10px;font-size:.7rem;margin-left:6px}
+.dock button{width:48px;height:48px;border-radius:24px;background:rgba(255,255,255,.14);color:#fff}
 .nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:10px 20px calc(10px + env(safe-area-inset-bottom,0px));z-index:6}
 .nav div{display:flex;width:100%;max-width:520px;background:var(--sf);border-radius:32px;padding:6px;box-shadow:var(--sh2);border:1px solid var(--bd)}
-.nav button{flex:1;height:60px;border-radius:26px;font-weight:700;font-size:.75rem;color:var(--tx2);line-height:1.25}.nav button i{font-style:normal;font-size:1.25rem;display:block}
+.nav button{flex:1;height:62px;border-radius:28px;font-weight:600;font-size:.75rem;color:var(--tx2);line-height:1.25;flex-direction:column;gap:2px}
 .nav button.on{background:var(--sf2);color:var(--p)}
-.btn{width:100%;min-height:56px;border-radius:28px;background:var(--pc);color:#fff;font-weight:800;font-size:1.05rem;box-shadow:var(--glow);padding:0 20px}
+.btn{width:100%;min-height:56px;border-radius:28px;background:var(--pc);color:#fff;font-weight:700;font-size:1.05rem;box-shadow:var(--glow);padding:0 20px;gap:10px}
 .btn:active{background:#4338ca}
-.btn.g{background:linear-gradient(90deg,#3525cd 45%,#fd761a)}
-.btn.o{background:var(--sf2);color:var(--p);box-shadow:none;font-weight:700;font-size:.9rem;min-height:52px}
-.btn.d{background:var(--a);box-shadow:0 8px 24px -2px rgba(249,115,22,.4)}
-.seg{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px 0}.seg::-webkit-scrollbar{display:none}
-.seg.in{background:var(--sf2);border-radius:30px;padding:6px}
-.seg button{flex:1 0 auto;min-height:48px;padding:0 18px;border-radius:24px;background:var(--sf2);font-weight:700;font-size:.9rem;white-space:nowrap}
+.btn.g{background:linear-gradient(90deg,#3525cd 45%,#fd761a);font-size:1.1rem}
+.btn.o{background:var(--sf2);color:var(--tx);box-shadow:none;font-weight:600;font-size:.9rem;min-height:52px}
+.btn.o .ms{color:var(--p)}
+.seg{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 0}.seg::-webkit-scrollbar{display:none}
+.seg.in{background:var(--sf2);border-radius:32px;padding:6px;gap:4px}
+.seg button{flex:1 0 auto;min-height:48px;padding:0 18px;border-radius:24px;background:var(--sf2);font-weight:600;font-size:.9rem;white-space:nowrap}
 .seg.in button{background:none}
 .seg button.on{background:var(--p);color:var(--onp);box-shadow:var(--glow)}
 .box{background:var(--sf);border:1px solid var(--bd);border-radius:24px;padding:14px 16px;box-shadow:var(--sh)}
 .row{display:flex;gap:10px;align-items:center}.row>*{flex:1}.sp{justify-content:space-between}.sp>*{flex:none}
 .step{display:flex;align-items:center;background:var(--sf2);border-radius:28px;padding:4px;gap:6px}
-.step button{width:48px;height:48px;border-radius:24px;background:var(--sf);font-size:1.4rem;font-weight:800}.step b{padding:0 8px;color:var(--p);font-size:1.05rem}
+.step button{width:48px;height:48px;border-radius:24px;background:var(--sf)}.step b{padding:0 8px;color:var(--p);font-size:1.05rem}
 .stage{margin-top:14px;border-radius:32px;background:linear-gradient(135deg,var(--sf2),var(--sf) 50%,var(--a2));box-shadow:var(--sh2);padding:22px 14px;text-align:center;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
-.hint{font-size:.75rem;font-weight:600;color:var(--p);background:var(--sf);padding:6px 14px;border-radius:16px}
-.dice{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;min-height:100px}
-.d{width:88px;height:88px;border-radius:24px;background:var(--sf);box-shadow:var(--sh2),inset 0 -6px 0 var(--sf2);display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:16px;gap:2px;place-items:center;font-size:2.2rem;font-weight:800;color:var(--p)}
+.hint{font-size:.75rem;font-weight:600;color:var(--p);background:var(--sf);padding:6px 14px;border-radius:16px;display:inline-flex;align-items:center;gap:6px}
+.dice{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;min-height:110px;align-items:center}
+.d{width:88px;height:88px;border-radius:24px;background:linear-gradient(145deg,#fff,var(--sf2));box-shadow:var(--sh2),inset 0 -6px 0 var(--sf2);display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:16px;gap:2px;place-items:center;font-size:2.2rem;font-weight:800;color:var(--p)}
+:root[data-t=dark] .d{background:var(--sf)}
+.d:nth-child(odd){transform:rotate(-6deg)}.d:nth-child(even){transform:rotate(6deg)}
 .d.n{display:grid;place-items:center;padding:0}.d.big{width:120px;height:120px;border-radius:32px;padding:22px}.d.big.n{font-size:3.2rem}
 .d i{width:15px;height:15px;border-radius:50%;background:#475569}.d.o i{background:#c2410c}.d.big i{width:20px;height:20px}
 .rolling .d{animation:sh .12s infinite}
 @keyframes sh{0%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-6px)}100%{transform:rotate(-8deg)}}
-.tot{font-size:1rem;font-weight:700;color:var(--tx2);letter-spacing:.04em}.tot b{font-size:3.4rem;font-weight:800;color:var(--p);margin-left:8px;letter-spacing:-.03em;vertical-align:middle}
+.tot{font-size:1.1rem;font-weight:600;color:var(--tx2);letter-spacing:.04em}.tot b{font-size:3.4rem;font-weight:800;color:var(--p);margin-left:8px;letter-spacing:-.03em;vertical-align:middle}
 .hrow{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.hrow::-webkit-scrollbar{display:none}
 .hc{flex:none;background:var(--sf);border-radius:18px;padding:10px 14px;box-shadow:var(--sh);font-size:.75rem;font-weight:700}.hc span{font-weight:500;color:var(--tx2);margin-left:6px}.hc div{margin-top:6px;font-size:1.1rem}.hc em{font-style:normal;background:var(--sf2);color:var(--p);padding:2px 8px;border-radius:8px;font-size:.8rem;margin-right:6px}
 .tm{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;text-align:center}
 .teams{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;position:relative}
 .team{background:var(--sf);border-radius:26px;box-shadow:var(--sh);padding:16px 10px 14px;text-align:center;border-top:8px solid;display:flex;flex-direction:column;align-items:center;gap:8px}
-.team input.n{width:100%;background:var(--sf2);border:0;border-radius:14px;height:40px;text-align:center;font-weight:800;font-size:.85rem;text-transform:uppercase;padding:0 6px}
+.nm{display:flex;align-items:center;gap:6px;width:100%;background:var(--sf2);border-radius:16px;height:40px;padding:0 10px}.nm i{width:10px;height:10px;border-radius:50%;flex:none}.nm input{flex:1;min-width:0;background:none;border:0;font-weight:700;font-size:.8rem;text-transform:uppercase;height:100%;padding:0}.nm input:focus{box-shadow:none}.nm .ms{color:var(--tx2)}
 .team .sc{font-size:clamp(64px,22vw,96px);font-weight:800;line-height:1;letter-spacing:-.04em}
-.team .pm{display:flex;gap:8px;width:100%}.team .pm button{flex:1;height:56px;border-radius:28px;background:var(--sf2);font-size:1.6rem;font-weight:800}.team .pm button.pl{color:#fff}
+.team .pm{display:flex;gap:8px;width:100%}.team .pm button{flex:1;height:56px;border-radius:28px;background:var(--sf2)}.team .pm button.pl{color:#fff}
 .vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:20px;background:var(--tx);color:var(--bg);font-size:.75rem;font-weight:800;display:grid;place-items:center;z-index:2}
-.pts{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px}.pts button{min-height:48px;border-radius:24px;background:var(--sf2);font-weight:700;font-size:.85rem}
+.pts{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px}.pts button{min-height:48px;border-radius:24px;background:var(--sf2);font-weight:600;font-size:.85rem}
 .match{background:var(--sf);border:1px solid var(--bd);border-radius:26px;padding:16px;margin-bottom:14px;box-shadow:var(--sh)}
 .sb{margin:12px 0;background:var(--sf3);border-radius:30px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:6px}
-.sb b{font-size:.85rem;font-weight:800;flex:1;text-transform:uppercase}.sb b:last-child{text-align:right}.sb small{display:block;font-weight:500;font-size:.7rem;color:var(--tx2);text-transform:none}
+.sb b{font-size:.85rem;font-weight:700;flex:1;text-transform:uppercase;min-width:0;overflow-wrap:anywhere}.sb b:last-child{text-align:right}
 .sb .n{background:var(--sf);border-radius:20px;padding:6px 14px;font-size:1.5rem;font-weight:800;color:var(--p);flex:none}
-.win{display:flex;justify-content:space-between;background:var(--a2);border-radius:20px;padding:12px 16px;font-weight:700;font-size:.85rem}
-.meta{font-size:.78rem;color:var(--tx2);margin:12px 0}
+.win{display:flex;justify-content:space-between;align-items:center;background:var(--a2);border-radius:20px;padding:12px 16px;font-weight:600;font-size:.85rem}.win .ms{color:#f59e0b}
+.meta{font-size:.78rem;color:var(--tx2);margin:12px 0;display:flex;align-items:center;gap:6px}
 .hero{background:linear-gradient(135deg,#3525cd,#4f46e5 60%,#7c6df5);color:#fff;border-radius:32px;padding:22px;box-shadow:var(--sh2);display:flex;gap:14px;align-items:center}
-.hero img{width:56px;height:56px;border-radius:16px}.hero h2{font-size:1.25rem;font-weight:800}.hero p{font-size:.8rem;opacity:.85}
-.grp{font-size:.75rem;font-weight:800;color:var(--tx2);letter-spacing:.08em;text-transform:uppercase;margin:24px 4px 10px}
-.set{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;min-height:72px}
-.set .t{flex:1;min-width:0}.set b{display:block;font-size:1rem;font-weight:700}.set small{font-size:.78rem;color:var(--tx2)}
+.hero .hi{width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.18);display:grid;place-items:center;flex:none}.hero h2{font-size:1.25rem;font-weight:700}.hero p{font-size:.8rem;opacity:.85}
+.grp{font-size:.75rem;font-weight:700;color:var(--tx2);letter-spacing:.08em;text-transform:uppercase;margin:24px 4px 10px}
+.set{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;min-height:72px;justify-content:flex-start}
+.set .t{flex:1;min-width:0}.set b{display:block;font-size:1rem;font-weight:600}.set small{font-size:.78rem;color:var(--tx2)}
 .set+.set{border-top:1px solid var(--bd)}
 .card2{background:var(--sf);border:1px solid var(--bd);border-radius:26px;box-shadow:var(--sh);margin-bottom:10px;overflow:hidden}
-.sw{width:52px;height:30px;border-radius:15px;background:var(--ol);position:relative;flex:none;transition:background .15s}
-.sw:after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}
-.on .sw{background:var(--pc)}.on .sw:after{left:25px}
+.sw{width:56px;height:32px;border-radius:16px;background:var(--sf2);border:1px solid var(--ol);position:relative;flex:none;transition:background .15s}
+.sw i{position:absolute;top:2px;left:2px;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--p);display:grid;place-items:center;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.on .sw{background:var(--pc);border-color:var(--pc)}.on .sw i{left:26px}
 .empty{text-align:center;color:var(--tx2);padding:36px 10px;font-size:.9rem}
 #toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:12px 20px;border-radius:24px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9;white-space:nowrap}
 #toast.s{opacity:1}
@@ -107,14 +116,16 @@ input:focus{outline:0;border-color:var(--pc);box-shadow:0 0 0 4px rgba(79,70,229
 </style></head><body>
 <div id="app"></div><div id="toast"></div>
 <script>
+const I=(n,c)=>`<span class="ms ${c||''}">${n}</span>`;
 const TOOLS=[
-{id:'dadu',n:'Dadu Digital',d:'Lempar acak D6, D12, D20',i:'🎲',tag:'Dadu 3D',c:'#3525cd',ok:1},
-{id:'skor',n:'Papan Skor',d:'Catat skor Futsal & Basket',i:'🏆',tag:'2 Tim',c:'#fd761a',ok:1},
-{id:'koin',n:'Lempar Koin',d:'Kepala atau Ekor sekejap',i:'🪙',tag:'50:50',c:'#ffdbca'},
-{id:'nama',n:'Pengacak Nama',d:'Undian & arisan praktis',i:'🔀',tag:'Arisan',c:'#6ffbbe'},
-{id:'roda',n:'Roda Putar',d:'Putar keputusan acak',i:'🎡',tag:'Spiner',c:'#c3c0ff'},
-{id:'timer',n:'Timer & Stopwatch',d:'Hitung mundur presisi',i:'⏱️',tag:'Detik',c:'#e2e7ff'},
-{id:'hitung',n:'Penghitung (Counter)',d:'Tally zikir, antrean & hitung cepat',i:'+1',tag:'Tally',c:'#6ffbbe',w:1}];
+{id:'dadu',n:'Dadu Digital',d:'Lempar acak D6, D12, D20',ic:'casino',bg:'#3525cd',fg:'#fff',tag:'Dadu 3D',ok:1},
+{id:'skor',n:'Papan Skor',d:'Catat skor Futsal & Basket',ic:'emoji_events',bg:'#fd761a',fg:'#fff',tag:'2 Tim',ok:1},
+{id:'koin',n:'Lempar Koin',d:'Kepala atau Ekor sekejap',ic:'monetization_on',bg:'#ffdbca',fg:'#9d4300',tag:'50:50'},
+{id:'nama',n:'Pengacak Nama',d:'Undian & arisan praktis',ic:'shuffle',bg:'#005338',fg:'#fff',tag:'Arisan'},
+{id:'roda',n:'Roda Putar',d:'Putar keputusan acak',ic:'incomplete_circle',bg:'#c3c0ff',fg:'#3525cd',tag:'Spiner'},
+{id:'timer',n:'Timer & Stopwatch',d:'Hitung mundur presisi',ic:'timer',bg:'#e2e7ff',fg:'#3525cd',tag:'Detik'},
+{id:'hitung',n:'Penghitung (Counter)',d:'Tally zikir, antrean & hitung cepat',ic:'exposure_plus_1',bg:'#6ffbbe',fg:'#005338',tag:'Tally',w:1}];
+const SPI={Futsal:'sports_soccer',Basket:'sports_basketball',Badminton:'sports_tennis',Voli:'sports_volleyball',Umum:'sports_score'};
 const DEF={dark:null,vib:true,snd:true,wake:true,big:false};
 let st={fav:[],recent:[],hist:[],set:{...DEF}};
 try{const x=JSON.parse(localStorage.getItem('ofa'));if(x)st={...st,...x,set:{...DEF,...x.set}}}catch(e){}
@@ -128,7 +139,6 @@ let tI=null,wl=null,ac=null,last=0,shakeOn=false;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
-const SP={Futsal:'⚽',Basket:'🏀',Badminton:'🏸',Voli:'🏐',Umum:'🎯'};
 function toast(m){const t=$('#toast');t.textContent=m;t.className='s';setTimeout(()=>t.className='',1800)}
 function vib(p){if(st.set.vib&&navigator.vibrate)navigator.vibrate(p||25)}
 function beep(f,d){if(!st.set.snd)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f||520;g.gain.value=.08;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+(d||.08))}catch(e){}}
@@ -138,83 +148,85 @@ function go(v){view=v;if(TOOLS.some(t=>t.id===v&&t.ok)){st.recent=[{id:v,t:Date.
  if(v==='skor')wake();else rel();render();scrollTo(0,0)}
 async function wake(){if(st.set.wake&&'wakeLock'in navigator){try{wl=await navigator.wakeLock.request('screen')}catch(e){}}}
 function rel(){if(wl){wl.release().catch(()=>{});wl=null}}
-function hdr(title,sub,back,fav){return `<div class="top">${back?`<button class="ib" data-go="${back}" aria-label="Kembali">←</button>`:'<img src="icon.svg" alt="">'}<div class="tt"><h1>${title}</h1>${sub?`<small>${sub}</small>`:''}</div>${fav?`<button class="ib" data-fav="${fav}" aria-label="Favorit" style="color:var(--a)">${st.fav.includes(fav)?'★':'☆'}</button>`:`<button class="ib" data-set="vib" aria-label="Getar">${st.set.vib?'📳':'📴'}</button>`}</div>`}
-function nav(){const t=[['home','🏠','Beranda'],['fav','⭐','Favorit'],['set','⚙️','Pengaturan']];
- return `<div class="nav"><div>${t.map(x=>`<button data-go="${x[0]}" class="${view===x[0]?'on':''}"><i>${x[1]}</i>${x[2]}</button>`).join('')}</div></div>`}
+function hdr(title,sub,back){return `<div class="top">${back?`<button class="ib pl" data-go="${back}" aria-label="Kembali">${I('arrow_back')}</button>`:''}<img src="icon.svg" alt="One for All"><div class="tt"><h1>${title}</h1>${sub?`<small>${sub}</small>`:''}</div>${back?'':`<button class="ib pl" data-set="vib" aria-label="Getar">${I('vibration')}</button>`}<button class="ib pr" data-go="set" aria-label="Pengaturan">${I('person','s')}</button></div>`}
+function nav(){const t=[['home','home','Beranda'],['fav','star','Favorit'],['set','tune','Pengaturan']];
+ return `<div class="nav"><div>${t.map(x=>`<button data-go="${x[0]}" class="${view===x[0]?'on':''}">${I(x[1])}${x[2]}</button>`).join('')}</div></div>`}
+const sq=(t,c)=>`<span class="sq ${c||''}" style="background:${t.bg};color:${t.fg}">${I(t.ic)}</span>`;
 function card(t){const f=st.fav.includes(t.id);
- const ic=`<div class="sq" style="background:${t.c};${t.c==='#3525cd'||t.c==='#fd761a'?'color:#fff':'color:#131b2e'};font-weight:800">${t.i}</div>`;
- const star=`<button class="star" data-fav="${t.id}" aria-label="Favorit">${f?'★':'☆'}</button>`;
+ const star=`<button class="star ${f?'':'off'}" data-fav="${t.id}" aria-label="Favorit">${I('star',f?'f':'')}</button>`;
  const cov=`<button class="cover" data-tool="${t.id}" aria-label="Buka ${t.n}"></button>`;
- if(t.w)return `<div class="card w" ${t.ok?'':'style="opacity:.8"'}>${ic}<div><h3>${t.n}</h3><p>${t.d}</p></div><span class="pill g">${t.tag}</span><span style="width:36px"></span>${star}${cov}</div>`;
- return `<div class="card" ${t.ok?'':'style="opacity:.8"'}>${star}${ic}<h3>${t.n}</h3><p>${t.d}</p><div class="ft"><span class="pill">${t.ok?t.tag:'Segera hadir'}</span><span>→</span></div>${cov}</div>`}
+ if(t.w)return `<div class="card w">${sq(t)}<div><h3>${t.n}</h3><p>${t.d}</p></div><span class="pill g" style="align-self:flex-start;margin-right:40px">${t.tag}</span>${star}${cov}</div>`;
+ return `<div class="card" ${t.ok?'':'style="opacity:.85"'}>${star}${sq(t)}<h3>${t.n}</h3><p>${t.d}</p><div class="ft"><span class="pill">${t.ok?t.tag:'Segera hadir'}</span>${I('arrow_forward','s')}</div>${cov}</div>`}
 function vHome(){const l=TOOLS.filter(t=>t.n.toLowerCase().includes(q.toLowerCase()));
  const r=st.recent.map(x=>({t:TOOLS.find(y=>y.id===x.id),w:x.t})).filter(x=>x.t);
  const fv=st.fav.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
- return hdr('One for All','Beranda')+`<div class="srch"><span>🔍</span><input class="s" id="q" placeholder="Cari alat serba guna..." value="${esc(q)}"></div>
- ${r.length&&!q?`<div class="sh"><h2 class="sec">🕘 Terakhir Dipakai</h2><small>OTOMATIS</small></div><div class="rec">${r.map(x=>`<button class="chip" data-tool="${x.t.id}"><span class="sq" style="background:${x.t.c};color:${x.t.c==='#3525cd'||x.t.c==='#fd761a'?'#fff':'#131b2e'}">${x.t.i}</span><span><b>${x.t.n.split(' ')[0]==='Dadu'?'Dadu':x.t.n}</b><small>${ago(x.w)}</small></span></button>`).join('')}</div>`:''}
+ return hdr('One for All','Beranda')+`<div class="srch">${I('search')}<input class="s" id="q" placeholder="Cari alat serba guna..." value="${esc(q)}">${q?`<button class="cl" data-act="qclr" aria-label="Hapus">${I('cancel','f')}</button>`:''}</div>
+ ${r.length&&!q?`<div class="sh"><h2 class="sec">${I('history')} Terakhir Dipakai</h2><small>OTOMATIS</small></div><div class="rec">${r.map(x=>`<button class="chip" data-tool="${x.t.id}">${sq(x.t)}<span><b>${x.t.id==='dadu'?'Dadu':x.t.n}</b><small>${ago(x.w)}</small></span></button>`).join('')}</div>`:''}
  <div class="sh" style="margin-top:26px"><div><h2 class="big2">Semua Alat Praktis</h2><p class="sub">Pilih bantuan serba ada untuk harimu</p></div><span class="pill">${TOOLS.length} Alat</span></div>
  <div class="grid">${l.map(card).join('')}</div>${l.length?'':'<p class="empty">Tidak ada alat yang cocok.</p>'}
- ${fv.length?`<div class="dock"><span class="dot"></span><b>Favorit Cepat<small>${fv.length} aktif</small></b>${fv.slice(0,3).map(t=>`<button data-tool="${t.id}" aria-label="${t.n}">${t.i}</button>`).join('')}</div>`:''}`}
+ ${fv.length?`<div class="dock"><span class="dot"></span><b>Favorit Cepat<small>${fv.length} aktif</small></b>${fv.slice(0,3).map(t=>`<button data-tool="${t.id}" aria-label="${t.n}">${I(t.ic,'s')}</button>`).join('')}</div>`:''}`}
 function vFav(){const l=TOOLS.filter(t=>st.fav.includes(t.id));
  return hdr('Favorit','Alat pilihanmu')+(l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<p class="empty">Belum ada favorit. Ketuk bintang pada alat untuk menambahkannya.</p>')}
 function pips(x){const P={1:[5],2:[1,9],3:[1,5,9],4:[1,3,7,9],5:[1,3,5,7,9],6:[1,3,4,6,7,9]}[x]||[];return Array.from({length:9},(_,i)=>P.includes(i+1)?'<i></i>':'<span></span>').join('')}
 function vDadu(){const v=dc.vals,tot=v.reduce((a,b)=>a+b,0),mx=dc.n*dc.t;
- const badge=v.length&&!dc.rolling?(tot===mx?'<span class="pill o">🔥 Hasil Tertinggi!</span>':tot===dc.n?'<span class="pill">Hasil Terendah</span>':''):'';
- return hdr('Lempar Dadu','','home','dadu')+`<div class="seg in">${[6,12,20].map(n=>`<button data-dt="${n}" class="${dc.t===n?'on':''}">D${n}${n===6?' (Kubus)':''}</button>`).join('')}</div>
- <div class="box row sp" style="margin-top:12px"><b>🎲 Jumlah Dadu</b><div class="step"><button data-dn="-1" aria-label="Kurang">−</button><b>${dc.n} Dadu</b><button data-dn="1" aria-label="Tambah">+</button></div></div>
- <div class="stage"><span class="hint">📳 Goyangkan HP untuk melempar</span>
+ const badge=v.length&&!dc.rolling?(tot===mx?`<span class="pill o">${I('local_fire_department','xs')} Hasil Tertinggi!</span>`:tot===dc.n?'<span class="pill">Hasil Terendah</span>':''):'';
+ const ti={6:['view_in_ar','D6 (Kubus)'],12:['hexagon','D12'],20:['diamond','D20']};
+ return hdr('Lempar Dadu','','home')+`<div class="seg in">${[6,12,20].map(n=>`<button data-dt="${n}" class="${dc.t===n?'on':''}">${I(ti[n][0],'s')}${ti[n][1]}</button>`).join('')}</div>
+ <div class="box row sp" style="margin-top:12px"><b style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem">${I('casino','s')} Jumlah Dadu</b><div class="step"><button data-dn="-1" aria-label="Kurang">${I('remove')}</button><b>${dc.n} Dadu</b><button data-dn="1" aria-label="Tambah">${I('add')}</button></div></div>
+ <div class="stage"><span class="hint">${I('screen_rotation','xs')} Goyangkan HP untuk melempar</span>
  <div class="dice ${dc.rolling?'rolling':''}" aria-live="polite">${v.length?v.map((x,i)=>dc.t===6?`<div class="d ${i%2?'o':''} ${v.length===1?'big':''}">${pips(x)}</div>`:`<div class="d n ${v.length===1?'big':''}">${x}</div>`).join(''):'<p class="empty">Ketuk Kocok & Lempar</p>'}</div>
  ${v.length?`<div class="tot">TOTAL:<b>${tot}</b></div>${badge}`:''}</div>
- <div class="sh" style="margin:18px 0 8px"><h2 class="sec" style="font-size:1rem">🕘 Riwayat Lemparan</h2>${dc.hist.length?'<button data-act="dclr" style="font-size:.75rem;font-weight:700;color:var(--tx2);min-height:48px">Hapus</button>':''}</div>
+ <div class="sh" style="margin:18px 0 8px"><h2 class="sec" style="font-size:1rem;font-weight:600">${I('history','s')} Riwayat Lemparan</h2>${dc.hist.length?'<button data-act="dclr" style="font-size:.75rem;font-weight:700;color:var(--tx2);min-height:48px">Hapus</button>':''}</div>
  <div class="hrow">${dc.hist.length?dc.hist.map((h,i)=>`<div class="hc">Lemparan ${dc.hist.length-i}<span>${h.w}</span><div><em>${h.v.join(' + ')}</em>= ${h.s}</div></div>`).join(''):'<p class="sub">Belum ada lemparan.</p>'}</div>
- <div style="height:16px"></div><button class="btn g" data-act="roll">🎲 KOCOK & LEMPAR</button>
- <div class="row" style="margin-top:10px"><button class="btn o" data-act="dreset">↺ Atur Ulang</button><button class="btn o" data-set="snd">🔊 Suara: ${st.set.snd?'Aktif':'Mati'}</button></div>`}
+ <div style="height:16px"></div><button class="btn g" data-act="roll">${I('casino','f')} KOCOK & LEMPAR</button>
+ <div class="row" style="margin-top:10px"><button class="btn o" data-act="dreset">${I('restart_alt','s')} Atur Ulang</button><button class="btn o" data-set="snd">${I(st.set.snd?'volume_up':'volume_off','s')} Suara: ${st.set.snd?'Aktif':'Mati'}</button></div>`}
 function roll(){if(dc.rolling)return;dc.rolling=true;vib([40,30,40]);beep(420);
  const r=()=>Array.from({length:dc.n},()=>1+Math.floor(Math.random()*dc.t));
  let k=0;const iv=setInterval(()=>{dc.vals=r();render();if(++k>=6){clearInterval(iv);
   const f=Array.from({length:dc.n},()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return 1+a[0]%dc.t});
-  dc.vals=f;dc.rolling=false;const n=new Date();dc.hist=[{v:f,s:f.reduce((a,b)=>a+b,0),w:n.toTimeString().slice(0,5)},...dc.hist].slice(0,10);vib(60);beep(660);render()}},100)}
+  dc.vals=f;dc.rolling=false;dc.hist=[{v:f,s:f.reduce((a,b)=>a+b,0),w:new Date().toTimeString().slice(0,5)},...dc.hist].slice(0,10);vib(60);beep(660);render()}},100)}
 async function shake(){if(shakeOn)return;try{if(typeof DeviceMotionEvent!=='undefined'&&DeviceMotionEvent.requestPermission){if(await DeviceMotionEvent.requestPermission()!=='granted')return}
  shakeOn=true;addEventListener('devicemotion',e=>{if(view!=='dadu')return;const a=e.accelerationIncludingGravity;if(!a)return;const m=Math.abs(a.x)+Math.abs(a.y)+Math.abs(a.z);const n=Date.now();if(m>38&&n-last>1200){last=n;roll()}})}catch(e){}}
-function team(k){const o=k==='a'?'b':'a';return `<div class="team" style="border-color:${sc['c'+k]}"><input class="n" data-nm="${k}" value="${esc(sc['n'+k])}" aria-label="Nama tim"><div class="sc" style="color:${sc['c'+k]==='#3525cd'&&document.documentElement.dataset.t==='dark'?'#c3c0ff':sc['c'+k]}">${sc[k]}</div><button class="pill r" data-foul="${k}" style="min-height:36px">Foul: ${sc['f'+k]}</button><div class="pm"><button data-sc="${k}" data-d="-1" aria-label="Kurang">−</button><button class="pl" data-sc="${k}" data-d="1" style="background:${sc['c'+k]}" aria-label="Tambah">+</button></div></div>`}
-function vSkor(){
- return hdr('Papan Skor','','home','skor')+`<div class="row sp" style="margin-bottom:6px">${wl?'<span class="pill g">● Layar Tetap Menyala</span>':'<span></span>'}${st.fav.includes('skor')?'<span class="pill">★ Favorit</span>':''}</div>
- <div class="seg">${Object.keys(SP).map(s=>`<button data-sp="${s}" class="${sc.sport===s?'on':''}">${SP[s]} ${s}</button>`).join('')}</div>
- <div class="box" style="margin-top:8px;text-align:center"><div class="row sp"><button class="pill" data-act="bab" style="min-height:48px;font-size:.8rem">🕘 Babak ${sc.bab} ▾</button><div class="tm" id="tm">${fmt(sc.t)}</div><button class="ib" data-act="rst" aria-label="Reset">↺</button></div>
- <div class="row" style="justify-content:center;margin-top:8px"><button class="btn" style="max-width:160px;min-height:52px" data-act="tim">${sc.run?'❚❚ Jeda':'▶ Mulai'}</button><button class="btn o" style="max-width:130px" data-act="atur">⚙ Atur</button></div></div>
+function team(k){const dk=document.documentElement.dataset.t==='dark',c=sc['c'+k];return `<div class="team" style="border-color:${c}"><div class="nm"><i style="background:${c}"></i><input data-nm="${k}" value="${esc(sc['n'+k])}" aria-label="Nama tim">${I('edit','xs')}</div><div class="sc" style="color:${dk&&c==='#3525cd'?'#c3c0ff':c}">${sc[k]}</div><button class="pill r" data-foul="${k}" style="min-height:36px">Foul: ${sc['f'+k]}</button><div class="pm"><button data-sc="${k}" data-d="-1" aria-label="Kurang">${I('remove','l')}</button><button class="pl" data-sc="${k}" data-d="1" style="background:${c}" aria-label="Tambah">${I('add','l')}</button></div></div>`}
+function vSkor(){const f=st.fav.includes('skor');
+ return hdr('Hitung Tally','','home')+`<div class="row sp" style="margin-bottom:6px"><span class="pill" style="background:var(--sf2);color:var(--tx2)">${wl?'<i style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block"></i>':''} Layar Tetap Menyala</span><button class="pill" data-fav="skor" style="min-height:32px">${I('star','xs '+(f?'f':''))} Favorit</button></div>
+ <div class="seg">${Object.keys(SPI).map(s=>`<button data-sp="${s}" class="${sc.sport===s?'on':''}">${I(SPI[s],'s')} ${s}</button>`).join('')}</div>
+ <div class="box" style="margin-top:8px;text-align:center"><div class="row sp"><button class="pill" data-act="bab" style="min-height:48px;font-size:.8rem">${I('schedule','s')} Babak ${sc.bab} ${I('expand_more','s')}</button><div class="tm" id="tm">${fmt(sc.t)}</div><button class="ib" data-act="rst" aria-label="Reset" style="background:var(--sf2);border:0">${I('restart_alt','s')}</button></div>
+ <div class="row" style="justify-content:center;margin-top:8px"><button class="btn" style="max-width:160px;min-height:52px" data-act="tim">${I(sc.run?'pause':'play_arrow','f')} ${sc.run?'Jeda':'Mulai'}</button><button class="btn o" style="max-width:130px" data-act="atur">${I('tune','s')} Atur</button></div></div>
  <div class="teams">${team('a')}${team('b')}<div class="vs">VS</div></div>
- <div class="box" style="margin-top:14px"><div class="row sp"><b style="font-size:.8rem">Pintasan Poin Ekstra</b><span style="font-size:.75rem;font-weight:700;color:var(--p)">Multi-Poin</span></div>
+ <div class="box" style="margin-top:14px"><div class="row sp"><b style="font-size:.8rem;font-weight:600">Pintasan Poin Ekstra</b><span style="font-size:.75rem;font-weight:700;color:var(--p)">Multi-Poin</span></div>
  <div class="pts">${['a','b'].map(k=>[1,2,3].map(n=>`<button data-sc="${k}" data-d="${n}">+${n}</button>`).join('')).join('')}</div></div>
- <div class="row" style="margin-top:14px"><button class="btn o" data-act="whs">📣 Tiup Peluit</button><button class="btn o" data-act="swp">⇄ Tukar Sisi</button></div>
- <div style="height:12px"></div><button class="btn" data-act="sv">💾 Simpan Pertandingan</button>
- <button class="btn o" style="margin-top:10px" data-go="riw">🕘 Lihat Riwayat & Log Skor</button>`}
+ <div class="row" style="margin-top:14px"><button class="btn o" data-act="whs">${I('sports','s')} Tiup Peluit</button><button class="btn o" data-act="swp">${I('swap_horiz','s')} Tukar Sisi</button></div>
+ <div style="height:12px"></div><button class="btn" data-act="sv">${I('save','s')} Simpan Pertandingan</button>
+ <button class="btn o" style="margin-top:10px" data-go="riw">${I('history','s')} Lihat Riwayat & Log Skor</button>`}
 function vRiw(){const H=st.hist,cnt=s=>H.filter(h=>h.sport===s).length;
  const L=rf==='Semua'?H:H.filter(h=>h.sport===rf),n=H.length;
  const sp=[...new Set(H.map(h=>h.sport))];
  const win=n?Math.round(H.filter(h=>h.a>h.b).length/n*100):0,avg=n?(H.reduce((s,h)=>s+h.a+h.b,0)/n).toFixed(1):'0';
- return hdr('Riwayat','Pertandingan','skor')+`<div class="seg"><button data-rf="Semua" class="${rf==='Semua'?'on':''}">Semua (${n})</button>${sp.map(s=>`<button data-rf="${s}" class="${rf===s?'on':''}">${s} (${cnt(s)})</button>`).join('')}<button class="ib" data-act="exp" aria-label="Ekspor" style="flex:none">⤴</button></div>
- <div class="box" style="margin-top:10px;padding:18px"><small style="font-size:.7rem;font-weight:800;color:#9d4300;letter-spacing:.06em">RINGKASAN SESI</small><h2 style="font-size:1.3rem;font-weight:800;margin:4px 0 12px">${n} Laga Tercatat</h2>
- <div class="row"><div style="background:var(--sf3);border-radius:24px;padding:14px"><small style="font-weight:600;color:var(--tx2)">Tim 1 Menang</small><div class="big2" style="font-size:1.8rem">${win}%</div></div><div style="background:var(--sf3);border-radius:24px;padding:14px"><small style="font-weight:600;color:var(--tx2)">Rata-rata Skor</small><div class="big2" style="font-size:1.8rem">${avg}<small style="font-size:.75rem;font-weight:500;color:var(--tx2)"> poin/laga</small></div></div></div></div>
- <div class="sh"><h2 class="sec">Aktivitas Terakhir</h2><small>URUTAN: TERBARU</small></div>
- ${L.length?L.map(h=>{const i=H.indexOf(h);const w=h.a===h.b?'Seri':h.na+' Menang';return `<div class="match"><div class="row sp"><div class="row" style="gap:10px"><span class="sq" style="background:var(--sf2);width:36px;height:36px;font-size:1rem">${SP[h.sport]||'🎯'}</span><div><b style="font-size:.9rem">${esc(h.sport)} · Babak ${h.bab||1}</b><div class="sub" style="font-size:.72rem">${h.d}</div></div></div><span class="pill">Selesai</span></div>
+ return hdr('Hitung Tally','','skor')+`<div class="seg"><button data-rf="Semua" class="${rf==='Semua'?'on':''}">Semua (${n})</button>${sp.map(s=>`<button data-rf="${s}" class="${rf===s?'on':''}">${s} (${cnt(s)})</button>`).join('')}<button class="ib" data-act="exp" aria-label="Ekspor" style="flex:none;background:var(--sf2);border:0">${I('ios_share','s')}</button></div>
+ <div class="box" style="margin-top:10px;padding:18px"><div class="row sp" style="align-items:flex-start"><div><small style="font-size:.7rem;font-weight:700;color:#9d4300;letter-spacing:.06em">RINGKASAN SESI</small><h2 style="font-size:1.3rem;font-weight:700;margin:4px 0 12px">${n} Laga Tercatat</h2></div><span class="sq" style="background:var(--sf2);color:var(--p);border-radius:14px">${I('analytics')}</span></div>
+ <div class="row"><div style="background:var(--sf3);border-radius:28px;padding:14px"><small style="font-weight:500;color:var(--tx2);display:flex;gap:6px;align-items:center">${I('check_circle','xs')} Rasio Menang</small><div class="big2" style="font-size:1.8rem">${win}%</div></div><div style="background:var(--sf3);border-radius:28px;padding:14px"><small style="font-weight:500;color:var(--tx2);display:flex;gap:6px;align-items:center"><span style="color:var(--a)">${I('sports_score','xs')}</span> Rata-rata Skor</small><div class="big2" style="font-size:1.8rem">${avg}<small style="font-size:.75rem;font-weight:500;color:var(--tx2)"> poin/laga</small></div></div></div></div>
+ <div class="sh"><h2 class="sec" style="font-weight:700">Aktivitas Terakhir</h2><small style="letter-spacing:0;font-weight:600">Urutkan: Terbaru</small></div>
+ ${L.length?L.map(h=>{const i=H.indexOf(h);const w=h.a===h.b?'Seri':h.na+' Menang';return `<div class="match"><div class="row sp"><div class="row" style="gap:10px"><span class="sq" style="background:var(--sf2);color:var(--p);width:36px;height:36px;border-radius:50%">${I(SPI[h.sport]||'sports_score','s')}</span><div><b style="font-size:.9rem;font-weight:600">${esc(h.sport)} · Babak ${h.bab||1}</b><div class="sub" style="font-size:.72rem">${h.d}</div></div></div><span class="pill" style="background:var(--sf3);color:var(--tx2)">Selesai</span></div>
  <div class="sb"><b>${esc(h.na)}</b><span class="n">${h.a} : ${h.b}</span><b>${esc(h.nb)}</b></div>
- <div class="win"><span>🏆 ${esc(w)}</span><span style="color:#9d4300;font-size:.75rem">${Math.abs(h.a-h.b)<=1?'Sengit':'Telak'}</span></div>
- <div class="meta">⏱ Durasi: ${fmt(h.t)} · Foul ${h.fa||0}–${h.fb||0}</div>
- <div class="row"><button class="btn o" data-open="${i}" style="flex:1">↺ Buka Ulang Skor</button><button class="ib" style="flex:none;background:var(--sf2)" data-share="${i}" aria-label="Bagikan">⤴</button><button class="ib" style="flex:none;background:var(--er2);color:var(--er)" data-del="${i}" aria-label="Hapus">🗑</button></div></div>`}).join(''):'<p class="empty">Belum ada pertandingan tersimpan. Simpan dari Papan Skor.</p>'}
- <button class="btn" data-act="new">⊕ Mulai Pertandingan Baru</button>`}
-function setRow(ic,bg,t,s,k,on){return `<button class="card2 set ${on?'on':''}" data-set="${k}"><span class="sq" style="background:${bg};width:48px;height:48px">${ic}</span><span class="t"><b>${t}</b><small>${s}</small></span><span class="sw"></span></button>`}
-function navRow(ic,bg,t,s,act,red){return `<button class="set" data-act="${act}"><span class="sq" style="background:${bg};width:48px;height:48px">${ic}</span><span class="t"><b style="${red?'color:var(--er)':''}">${t}</b><small>${s}</small></span><span style="color:${red?'var(--er)':'var(--tx2)'}">›</span></button>`}
+ <div class="win"><span style="display:flex;gap:8px;align-items:center">${I('emoji_events','f')} ${esc(w)}</span><span style="color:#9d4300;font-size:.75rem">${Math.abs(h.a-h.b)<=1?'Sengit':'Telak'}</span></div>
+ <div class="meta">${I('timer','xs')} Durasi: ${fmt(h.t)} · Foul ${h.fa||0}–${h.fb||0}</div>
+ <div class="row"><button class="btn o" data-open="${i}" style="flex:1;color:var(--p)">${I('history','s')} Buka Ulang Skor</button><button class="ib" style="flex:none;background:var(--sf2);border:0" data-share="${i}" aria-label="Bagikan">${I('share','s')}</button><button class="ib" style="flex:none;background:var(--er2);color:var(--er);border:0" data-del="${i}" aria-label="Hapus">${I('delete','s')}</button></div></div>`}).join(''):'<p class="empty">Belum ada pertandingan tersimpan. Simpan dari Papan Skor.</p>'}
+ <button class="btn" data-act="new">${I('add_circle')} Mulai Pertandingan Baru</button>`}
+const tgl=on=>`<span class="sw"><i>${on?I('check','xs'):''}</i></span>`;
+function setRow(ic,bg,fg,t,s,k,on,ic2){return `<button class="card2 set ${on?'on':''}" data-set="${k}"><span class="sq" style="background:${bg};color:${fg};width:48px;height:48px;border-radius:12px">${I(ic)}</span><span class="t"><b>${t}</b><small>${s}</small></span><span class="sw"><i>${on?I('check','xs'):(ic2?I(ic2,'xs'):'')}</i></span></button>`}
+function navRow(ic,bg,fg,t,s,act,red){return `<button class="set" data-act="${act}"><span class="sq" style="background:${bg};color:${fg};width:48px;height:48px;border-radius:12px;font-size:1.4rem">${ic.length>2?I(ic):ic}</span><span class="t"><b style="${red?'color:var(--er)':''}">${t}</b><small>${s}</small></span><span style="color:${red?'var(--er)':'var(--tx2)'}">${I('chevron_right')}</span></button>`}
 function vSet(){const d=document.documentElement.dataset.t==='dark',n=[d,st.set.vib,st.set.snd,st.set.wake].filter(Boolean).length;
- return hdr('One for All','Pengaturan')+`<div class="hero"><img src="icon.svg" alt=""><div><h2>One for All</h2><p>Utilitas Harian Serba Bisa</p><span class="pill" style="background:rgba(255,255,255,.2);color:#fff;margin-top:6px">v1.0.0</span></div></div>
- <div class="sh"><span class="grp" style="margin:0">Preferensi & Performa</span><small style="color:var(--p)">${n} FITUR AKTIF</small></div>
- ${setRow('🌙','var(--sf2)','Mode Gelap (Dark Mode)',st.set.dark===null?'Sistem Otomatis':d?'Aktif':'Mati','dark',d)}
- ${setRow('📳','var(--sf2)','Efek Getar (Haptik)','Getaran saat lempar dadu & ubah skor','vib',st.set.vib)}
- ${setRow('🔊','var(--a2)','Efek Suara','Audio peluit, klik dadu & tombol','snd',st.set.snd)}
- ${setRow('☀️','var(--sf2)','Layar Tetap Menyala','Cegah layar redup saat Papan Skor','wake',st.set.wake)}
- <div class="grp">Bahasa & Tampilan</div><div class="card2">${navRow('🇮🇩','var(--sf3)','Bahasa Aplikasi','Bahasa Indonesia (ID)','lang')}${navRow('Tт','var(--sf2)','Ukuran Angka & Teks',st.set.big?'Besar / Ramah Jempol (Aktif)':'Standar (ketuk untuk memperbesar)','big')}</div>
- <div class="grp">Data & Riwayat</div><div class="card2">${navRow('⟳','var(--m)','Cadangkan Riwayat','Unduh riwayat sebagai file JSON','exp')}${navRow('🗑','var(--er2)','Hapus Riwayat Tersimpan','Kosongkan catatan papan skor & dadu','clr',1)}</div>
- <button class="btn o" style="min-height:60px;margin-top:6px" data-act="defs">↻ Kembalikan Pengaturan Standar</button>
- <p class="empty" style="padding:16px 0 0">Dibuat dengan cinta untuk mempermudah rutinitas harianmu.</p>`}
+ return hdr('One for All','Pengaturan')+`<div class="hero"><span class="hi">${I('apps_outage','l')}</span><div><h2>One for All</h2><p>Utilitas Harian Serba Bisa</p><span class="pill" style="background:rgba(255,255,255,.2);color:#fff;margin-top:6px">v1.0.0</span></div></div>
+ <div class="sh"><span class="grp" style="margin:0">Preferensi & Performa</span><small style="color:var(--p);font-weight:600;letter-spacing:0;font-size:.75rem">${n} Fitur Aktif</small></div>
+ ${setRow('dark_mode','var(--sf2)','var(--tx)','Mode Gelap (Dark Mode)',st.set.dark===null?'Sistem Otomatis':d?'Aktif':'Mati','dark',d,'dark_mode')}
+ ${setRow('vibration','#e2dfff','var(--p)','Efek Getar (Haptik)','Getaran saat lempar dadu & ubah skor','vib',st.set.vib)}
+ ${setRow('volume_up','var(--a2)','#9d4300','Efek Suara','Audio peluit, klik dadu & tombol','snd',st.set.snd)}
+ ${setRow('sunny','var(--sf2)','var(--tx)','Layar Tetap Menyala','Cegah layar redup saat Papan Skor','wake',st.set.wake)}
+ <div class="grp">Bahasa & Tampilan</div><div class="card2">${navRow('🇮🇩','var(--sf3)','var(--tx)','Bahasa Aplikasi','Bahasa Indonesia (ID)','lang')}${navRow('format_size','var(--sf2)','var(--tx)','Ukuran Angka & Teks',st.set.big?'Besar / Ramah Jempol (Aktif)':'Standar (ketuk untuk memperbesar)','big')}</div>
+ <div class="grp">Data & Riwayat</div><div class="card2">${navRow('cloud_sync','var(--m)','#005338','Cadangkan Riwayat','Unduh riwayat sebagai file JSON','exp')}${navRow('delete_sweep','var(--er2)','var(--er)','Hapus Riwayat Tersimpan','Kosongkan catatan papan skor & dadu','clr',1)}</div>
+ <button class="btn o" style="min-height:60px;margin-top:6px;font-size:1rem" data-act="defs">${I('restart_alt','s')} Kembalikan Pengaturan Standar</button>
+ <p class="empty" style="padding:16px 0 0;font-size:.8rem">Dibuat dengan cinta untuk mempermudah rutinitas harianmu.</p>`}
 function render(){const V={home:vHome,fav:vFav,set:vSet,dadu:vDadu,skor:vSkor,riw:vRiw};
  const a=document.activeElement,id=a&&a.id;$('#app').innerHTML=V[view]()+(['home','fav','set'].includes(view)?nav():'');
  if(id==='q'){const e=$('#q');e.focus();e.setSelectionRange(q.length,q.length)}}
@@ -235,6 +247,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)r
  if(D.del){if(confirm('Hapus pertandingan ini?')){st.hist.splice(+D.del,1);save();render()}return}
  if(D.set){if(D.set==='dark')st.set.dark=document.documentElement.dataset.t!=='dark';else st.set[D.set]=!st.set[D.set];save();theme();return render()}
  switch(D.act){
+ case'qclr':q='';return render();
  case'roll':shake();return roll();
  case'dreset':dc={...dc,n:2,t:6,vals:[]};return render();
  case'dclr':dc.hist=[];return render();
@@ -257,5 +270,7 @@ document.addEventListener('input',e=>{const t=e.target;
  if(t.dataset.nm)sc['n'+t.dataset.nm]=t.value});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&view==='skor')wake()});
 theme();render();shake();
+const okI=()=>document.documentElement.classList.add('icf');
+(document.fonts&&document.fonts.load?document.fonts.load('24px "Material Symbols Outlined"','star').then(okI,okI):Promise.resolve().then(okI));
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
 </script></body></html>
