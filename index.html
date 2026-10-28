@@ -77,15 +77,24 @@ input:focus{outline:0;border-color:var(--pc);box-shadow:0 0 0 4px rgba(79,70,229
 .stg{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:center}
 .cfg{background:var(--sf);box-shadow:var(--sh);border-radius:24px;min-height:48px;padding:0 16px;font-weight:700;font-size:.9rem;color:var(--p)}
 .hint{font-size:.75rem;font-weight:600;color:var(--p);background:var(--sf);padding:6px 14px;border-radius:16px;display:inline-flex;align-items:center;gap:6px}
-.dice{display:flex;flex-wrap:wrap;gap:calc(var(--ds)*.24);justify-content:center;align-items:center;perspective:700px;min-height:var(--ds)}
-.d{width:var(--ds);height:var(--ds);border-radius:calc(var(--ds)*.26);background:linear-gradient(145deg,#fff 0%,#eceeff 55%,#cdd1f6 100%);display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:calc(var(--ds)*.15);place-items:center;font-size:calc(var(--ds)*.45);font-weight:800;color:#3525cd;transform:rotateX(14deg) rotateY(-16deg) rotateZ(-6deg);box-shadow:inset 0 4px 3px rgba(255,255,255,.95),inset 0 -10px 16px rgba(53,37,205,.14),0 1px 0 #c8ccec,0 2px 0 #c2c6e8,0 3px 0 #bcc0e4,0 4px 0 #b6bae0,0 5px 0 #b0b4dc,0 6px 0 #aaaed8,0 8px 0 #9fa3cf,0 20px 26px rgba(15,23,42,.3)}
-:root[data-t=dark] .d{background:linear-gradient(145deg,#fff 0%,#e4e6ff 55%,#b9bdf2 100%);box-shadow:inset 0 4px 3px rgba(255,255,255,.95),inset 0 -10px 16px rgba(53,37,205,.18),0 1px 0 #a9a5f5,0 2px 0 #9e9af0,0 3px 0 #938feb,0 4px 0 #8884e6,0 5px 0 #7d79e0,0 6px 0 #726edb,0 8px 0 #6460cf,0 0 0 1px rgba(255,255,255,.55),0 0 54px rgba(139,133,255,.55),0 22px 28px rgba(0,0,0,.55)}
-.d:nth-child(even){transform:rotateX(14deg) rotateY(16deg) rotateZ(7deg)}
-.d.n{display:grid;padding:0}
-.d i{width:calc(var(--ds)*.17);height:calc(var(--ds)*.17);border-radius:50%;background:radial-gradient(circle at 35% 30%,#7c8aa5,#1e293b);box-shadow:inset 0 2px 3px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.8)}
-.d.o i{background:radial-gradient(circle at 35% 30%,#fb923c,#9a3412)}
-.rolling .d{animation:sh .14s infinite}
-@keyframes sh{0%{transform:rotateX(0) rotateY(0) rotateZ(-14deg) translateY(0)}50%{transform:rotateX(60deg) rotateY(40deg) rotateZ(14deg) translateY(-18px)}100%{transform:rotateX(0) rotateY(0) rotateZ(-14deg) translateY(0)}}
+.dice{display:flex;flex-wrap:wrap;gap:calc(var(--ds)*.3);justify-content:center;align-items:center;min-height:var(--ds)}
+.cw{perspective:900px;padding:calc(var(--ds)*.14) calc(var(--ds)*.08) calc(var(--ds)*.2);position:relative}
+.cw:after{content:"";position:absolute;left:8%;right:8%;bottom:calc(var(--ds)*.04);height:calc(var(--ds)*.2);background:radial-gradient(ellipse at center,rgba(15,23,42,.38),transparent 70%);filter:blur(3px)}
+:root[data-t=dark] .cw:after{background:radial-gradient(ellipse at center,rgba(0,0,0,.7),transparent 70%)}
+.cube{--h:calc(var(--ds)/2);width:var(--ds);height:var(--ds);position:relative;z-index:1;transform-style:preserve-3d;transform:rotateX(-56deg) rotateY(var(--ry,-28deg))}
+.sl{position:absolute;left:50%;top:50%}
+.fc{position:absolute;inset:0;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:calc(var(--ds)*.17);place-items:center;backface-visibility:hidden;font-size:calc(var(--ds)*.42);font-weight:800;color:#3525cd;line-height:1}
+.fc.n{display:grid;padding:0}
+.fc.t{transform:rotateX(90deg) translateZ(calc(var(--h) + .6px))}
+.fc.f{transform:translateZ(calc(var(--h) + .6px))}
+.fc.r{transform:rotateY(90deg) translateZ(calc(var(--h) + .6px))}
+.fc.k{transform:rotateY(180deg) translateZ(calc(var(--h) + .6px))}
+.fc.l{transform:rotateY(-90deg) translateZ(calc(var(--h) + .6px))}
+.fc.b{transform:rotateX(-90deg) translateZ(calc(var(--h) + .6px))}
+.fc i{width:calc(var(--ds)*.17);height:calc(var(--ds)*.17);border-radius:50%;background:radial-gradient(circle at 35% 30%,#7c8aa5,#1e293b);box-shadow:inset 0 2px 3px rgba(0,0,0,.5)}
+.cube.o .fc i{background:radial-gradient(circle at 35% 30%,#fb923c,#9a3412)}
+.rolling .cube{animation:spin .65s cubic-bezier(.2,.7,.3,1)}
+@keyframes spin{0%{transform:rotateX(-56deg) rotateY(var(--ry)) translateY(0)}45%{transform:rotateX(250deg) rotateY(300deg) translateY(-34px)}100%{transform:rotateX(304deg) rotateY(calc(var(--ry) + 720deg)) translateY(0)}}
 .rollbar{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:4;margin-top:16px}
 .ov{position:fixed;inset:0;background:rgba(15,20,36,.55);z-index:20;display:flex;align-items:flex-end;justify-content:center}
 .sheet{width:100%;max-width:560px;max-height:88vh;overflow-y:auto;background:var(--bg);border-radius:32px 32px 0 0;padding:12px 20px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:var(--sh2);animation:up .2s}
@@ -123,7 +132,7 @@ input:focus{outline:0;border-color:var(--pc);box-shadow:0 0 0 4px rgba(79,70,229
 #toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:12px 20px;border-radius:24px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9;white-space:nowrap}
 #toast.s{opacity:1}
 :focus-visible{outline:3px solid var(--a);outline-offset:2px}
-@media(prefers-reduced-motion:reduce){.rolling .d{animation:none}}
+@media(prefers-reduced-motion:reduce){.rolling .cube{animation:none}}
 </style></head><body>
 <div id="app"></div><div id="toast"></div>
 <script>
@@ -179,6 +188,19 @@ function vHome(){const l=TOOLS.filter(t=>t.n.toLowerCase().includes(q.toLowerCas
 function vFav(){const l=TOOLS.filter(t=>st.fav.includes(t.id));
  return hdr('Favorit','Alat pilihanmu')+(l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<p class="empty">Belum ada favorit. Ketuk bintang pada alat untuk menambahkannya.</p>')}
 function pips(x){const P={1:[5],2:[1,9],3:[1,5,9],4:[1,3,7,9],5:[1,3,5,7,9],6:[1,3,4,6,7,9]}[x]||[];return Array.from({length:9},(_,i)=>P.includes(i+1)?'<i></i>':'<span></span>').join('')}
+function mix(a,b,f){const p=x=>[1,3,5].map(i=>parseInt(x.slice(i,i+2),16)),A=p(a),B=p(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*f).toString(16).padStart(2,'0')).join('')}
+function slices(){const dk=document.documentElement.dataset.t==='dark',R=.09,H=.5,C=8,M=24;
+ const S=dk?{f:'#d3d6ff',r:'#8f93e4',l:'#a3a7ec'}:{f:'#e1e4ff',r:'#b0b5ea',l:'#c6caf3'},BT=dk?'#6f73d0':'#9fa4de',L=[];
+ for(let k=C;k>=0;k--){const th=Math.PI/2*k/C;L.push({y:H-R+R*Math.sin(th),s:R*Math.cos(th),t:Math.sin(th),up:1})}
+ for(let k=1;k<M;k++)L.push({y:(H-R)-(2*(H-R))*k/M,s:R,t:0,up:1});
+ for(let k=0;k<=C;k++){const th=Math.PI/2*k/C;L.push({y:-(H-R)-R*Math.sin(th),s:R*Math.cos(th),t:Math.sin(th),up:0})}
+ return L.map(o=>{const w=2*(H-R+o.s),g=o.up?'#ffffff':BT,c=x=>mix(x,g,o.t);
+  const bg=`conic-gradient(${c(S.l)} 0deg 25deg,${c(S.r)} 65deg 115deg,${c(S.f)} 155deg 205deg,${c(S.l)} 245deg 295deg,${c(S.l)} 335deg)`;
+  return `<div class="sl" style="width:calc(var(--ds)*${w.toFixed(3)});height:calc(var(--ds)*${w.toFixed(3)});margin:calc(var(--ds)*${(-w/2).toFixed(3)}) 0 0 calc(var(--ds)*${(-w/2).toFixed(3)});border-radius:calc(var(--ds)*${o.s.toFixed(3)});transform:rotateX(90deg) translateZ(calc(var(--ds)*${o.y.toFixed(3)}));background:${bg}"></div>`}).join('')}
+function cube(v,i){const t=dc.t;let n;
+ if(t===6){const adj=[1,2,3,4,5,6].filter(x=>x!==v&&x!==7-v),f=adj[0],r=adj.find(x=>x!==f&&x!==7-f);n={t:v,b:7-v,f:f,k:7-f,r:r,l:7-r}}
+ else n={t:v,f:v%t+1,r:(v+2)%t+1,k:(v+4)%t+1,l:(v+6)%t+1,b:(v+8)%t+1};
+ return `<div class="cw"><div class="cube ${i%2?'o':''}" style="--ry:${i%2?-40:-22}deg">${slices()}${['t','f','r','k','l','b'].map(k=>`<div class="fc ${k}${t===6?'':' n'}">${t===6?pips(n[k]):n[k]}</div>`).join('')}</div></div>`}
 function sheetHTML(){const ti={6:['view_in_ar','D6 (Kubus)'],12:['hexagon','D12'],20:['diamond','D20']};
  return `<div class="ov"><div class="sheet"><div class="grab"></div><div class="row sp" style="margin-bottom:10px"><h2 class="sec">${I('settings')} Pengaturan Dadu</h2><button class="ib" data-act="sheetx" aria-label="Tutup">${I('close','s')}</button></div>
  <div class="lbl" style="font-size:.75rem;font-weight:700;color:var(--tx2);letter-spacing:.08em;margin:8px 4px">JENIS DADU</div>
@@ -189,21 +211,20 @@ function sheetHTML(){const ti={6:['view_in_ar','D6 (Kubus)'],12:['hexagon','D12'
  <div class="row" style="margin:6px 0 12px"><button class="btn o" data-act="dreset">${I('restart_alt','s')} Atur Ulang</button><button class="btn o" data-act="dclr">${I('delete','s')} Hapus Riwayat</button></div>
  <button class="btn" data-act="sheetx">Selesai</button></div></div>`}
 function vDadu(){const v=dc.vals,tot=v.reduce((a,b)=>a+b,0),mx=dc.n*dc.t;
- const ds={1:'min(200px,56vw)',2:'min(150px,38vw)',3:'min(118px,30vw)',4:'min(118px,30vw)',5:'min(96px,26vw)',6:'min(96px,26vw)'}[dc.n];
+ const ds={1:'min(190px,50vw)',2:'min(110px,26vw)',3:'min(96px,23vw)',4:'min(96px,23vw)',5:'min(80px,20vw)',6:'min(80px,20vw)'}[dc.n];
  const show=v.length?v:Array(dc.n).fill(dc.t===6?6:dc.t);
  const badge=v.length&&!dc.rolling?(tot===mx?`<span class="pill o">${I('local_fire_department','xs')} Hasil Tertinggi!</span>`:tot===dc.n?'<span class="pill">Hasil Terendah</span>':''):'';
  return hdr('Lempar Dadu','','home')+`<div class="stage"><div class="stg"><button class="cfg" data-act="sheet">${I('tune','s')} ${dc.n} × D${dc.t}</button><button class="ib" data-act="sheet" aria-label="Pengaturan dadu">${I('settings')}</button></div>
  <span class="hint">${I('screen_rotation','xs')} Goyangkan HP untuk melempar</span>
- <div class="dice ${dc.rolling?'rolling':''}" style="--ds:${ds}" aria-live="polite">${show.map((x,i)=>dc.t===6?`<div class="d ${i%2?'o':''}">${pips(x)}</div>`:`<div class="d n">${x}</div>`).join('')}</div>
- ${v.length?`<div class="tot">TOTAL:<b>${tot}</b></div>${badge}`:''}</div>
+ <div class="dice ${dc.rolling?'rolling':''}" style="--ds:${ds}" aria-live="polite">${show.map(cube).join('')}</div>
+ ${v.length&&!dc.rolling?`<div class="tot">TOTAL:<b>${tot}</b></div>${badge}`:''}</div>
  <div class="sh" style="margin:18px 0 8px"><h2 class="sec" style="font-size:1rem;font-weight:600">${I('history','s')} Riwayat Lemparan</h2>${dc.hist.length?'<button data-act="dclr" style="font-size:.75rem;font-weight:700;color:var(--tx2);min-height:48px">Hapus</button>':''}</div>
  <div class="hrow">${dc.hist.length?dc.hist.map((h,i)=>`<div class="hc">Lemparan ${dc.hist.length-i}<span>${h.w}</span><div><em>${h.v.join(' + ')}</em>= ${h.s}</div></div>`).join(''):'<p class="sub">Belum ada lemparan.</p>'}</div>
  <div class="rollbar"><button class="btn g" data-act="roll">${I('casino','f')} KOCOK & LEMPAR</button></div>${dc.sheet?sheetHTML():''}`}
 function roll(){if(dc.rolling)return;dc.rolling=true;vib([40,30,40]);beep(420);
- const r=()=>Array.from({length:dc.n},()=>1+Math.floor(Math.random()*dc.t));
- let k=0;const iv=setInterval(()=>{dc.vals=r();render();if(++k>=6){clearInterval(iv);
-  const f=Array.from({length:dc.n},()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return 1+a[0]%dc.t});
-  dc.vals=f;dc.rolling=false;dc.hist=[{v:f,s:f.reduce((a,b)=>a+b,0),w:new Date().toTimeString().slice(0,5)},...dc.hist].slice(0,10);vib(60);beep(660);render()}},100)}
+ dc.vals=Array.from({length:dc.n},()=>1+Math.floor(Math.random()*dc.t));render();
+ setTimeout(()=>{const f=Array.from({length:dc.n},()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return 1+a[0]%dc.t});
+  dc.vals=f;dc.rolling=false;dc.hist=[{v:f,s:f.reduce((a,b)=>a+b,0),w:new Date().toTimeString().slice(0,5)},...dc.hist].slice(0,10);vib(60);beep(660);render()},700)}
 async function shake(){if(shakeOn)return;try{if(typeof DeviceMotionEvent!=='undefined'&&DeviceMotionEvent.requestPermission){if(await DeviceMotionEvent.requestPermission()!=='granted')return}
  shakeOn=true;addEventListener('devicemotion',e=>{if(view!=='dadu')return;const a=e.accelerationIncludingGravity;if(!a)return;const m=Math.abs(a.x)+Math.abs(a.y)+Math.abs(a.z);const n=Date.now();if(m>38&&n-last>1200){last=n;roll()}})}catch(e){}}
 function team(k){const dk=document.documentElement.dataset.t==='dark',c=sc['c'+k];return `<div class="team" style="border-color:${c}"><div class="nm"><i style="background:${c}"></i><input data-nm="${k}" value="${esc(sc['n'+k])}" aria-label="Nama tim">${I('edit','xs')}</div><div class="sc" style="color:${dk&&c==='#3525cd'?'#c3c0ff':c}">${sc[k]}</div><button class="pill r" data-foul="${k}" style="min-height:36px">Foul: ${sc['f'+k]}</button><div class="pm"><button data-sc="${k}" data-d="-1" aria-label="Kurang">${I('remove','l')}</button><button class="pl" data-sc="${k}" data-d="1" style="background:${c}" aria-label="Tambah">${I('add','l')}</button></div></div>`}
