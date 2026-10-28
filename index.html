@@ -314,5 +314,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&view==='s
 theme();render();shake();
 const okI=()=>document.documentElement.classList.add('icf');
 (document.fonts&&document.fonts.load?document.fonts.load('24px "Material Symbols Outlined"','star').then(okI,okI):Promise.resolve().then(okI));
-if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
+if('serviceWorker'in navigator&&location.protocol.startsWith('http')){const had=!!navigator.serviceWorker.controller;let rl=false;
+ navigator.serviceWorker.register('sw.js').then(r=>{r.update();document.addEventListener('visibilitychange',()=>{if(!document.hidden)r.update()})});
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!had||rl)return;if(sc.a||sc.b||sc.t||dc.rolling){toast('Versi baru tersedia. Buka ulang aplikasi setelah selesai.')}else{rl=true;location.reload()}})}
 </script></body></html>
