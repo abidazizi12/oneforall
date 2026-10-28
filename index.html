@@ -131,10 +131,13 @@ input:focus{outline:0;border-color:var(--pc);box-shadow:0 0 0 4px rgba(79,70,229
 .empty{text-align:center;color:var(--tx2);padding:36px 10px;font-size:.9rem}
 #toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:12px 20px;border-radius:24px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9;white-space:nowrap}
 #toast.s{opacity:1}
+#ptr{position:fixed;top:calc(env(safe-area-inset-top,0px) + 6px);left:50%;transform:translate(-50%,0);width:44px;height:44px;border-radius:22px;background:var(--sf);box-shadow:var(--sh2);display:grid;place-items:center;opacity:0;z-index:30;pointer-events:none;color:var(--p)}
+#ptr.go .ms{animation:rot .8s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
+html{overscroll-behavior-y:contain}
 :focus-visible{outline:3px solid var(--a);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.rolling .cube{animation:none}}
 </style></head><body>
-<div id="app"></div><div id="toast"></div>
+<div id="app"></div><div id="ptr"><span class="ms">refresh</span></div><div id="toast"></div>
 <script>
 const I=(n,c)=>`<span class="ms ${c||''}">${n}</span>`;
 const TOOLS=[
@@ -264,7 +267,7 @@ function vSet(){const d=document.documentElement.dataset.t==='dark',n=[d,st.set.
  ${setRow('volume_up','var(--a2)','#9d4300','Efek Suara','Audio peluit, klik dadu & tombol','snd',st.set.snd)}
  ${setRow('sunny','var(--sf2)','var(--tx)','Layar Tetap Menyala','Cegah layar redup saat Papan Skor','wake',st.set.wake)}
  <div class="grp">Bahasa & Tampilan</div><div class="card2">${navRow('🇮🇩','var(--sf3)','var(--tx)','Bahasa Aplikasi','Bahasa Indonesia (ID)','lang')}${navRow('format_size','var(--sf2)','var(--tx)','Ukuran Angka & Teks',st.set.big?'Besar / Ramah Jempol (Aktif)':'Standar (ketuk untuk memperbesar)','big')}</div>
- <div class="grp">Data & Riwayat</div><div class="card2">${navRow('cloud_sync','var(--m)','#005338','Cadangkan Riwayat','Unduh riwayat sebagai file JSON','exp')}${navRow('delete_sweep','var(--er2)','var(--er)','Hapus Riwayat Tersimpan','Kosongkan catatan papan skor & dadu','clr',1)}</div>
+ <div class="grp">Data & Riwayat</div><div class="card2">${navRow('cloud_sync','var(--m)','#005338','Cadangkan Riwayat','Unduh riwayat sebagai file JSON','exp')}${navRow('system_update','var(--sf2)','var(--p)','Perbarui Aplikasi','Muat versi terbaru (tarik layar ke bawah juga bisa)','upd')}${navRow('delete_sweep','var(--er2)','var(--er)','Hapus Riwayat Tersimpan','Kosongkan catatan papan skor & dadu','clr',1)}</div>
  <button class="btn o" style="min-height:60px;margin-top:6px;font-size:1rem" data-act="defs">${I('restart_alt','s')} Kembalikan Pengaturan Standar</button>
  <p class="empty" style="padding:16px 0 0;font-size:.8rem">Dibuat dengan cinta untuk mempermudah rutinitas harianmu.</p>`}
 function render(){const V={home:vHome,fav:vFav,set:vSet,dadu:vDadu,skor:vSkor,riw:vRiw};
@@ -288,6 +291,7 @@ document.addEventListener('click',e=>{if(e.target.classList&&e.target.classList.
  if(D.set){if(D.set==='dark')st.set.dark=document.documentElement.dataset.t!=='dark';else st.set[D.set]=!st.set[D.set];save();theme();return render()}
  switch(D.act){
  case'qclr':q='';return render();
+ case'upd':return hardRefresh();
  case'sheet':dc.sheet=true;return render();
  case'sheetx':dc.sheet=false;return render();
  case'roll':shake();return roll();
@@ -311,6 +315,15 @@ document.addEventListener('input',e=>{const t=e.target;
  if(t.id==='q'){q=t.value;return render()}
  if(t.dataset.nm)sc['n'+t.dataset.nm]=t.value});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&view==='skor')wake()});
+function hardRefresh(){if((sc.a||sc.b||sc.t)&&!confirm('Skor yang sedang berjalan akan hilang. Lanjutkan memperbarui?'))return;
+ const e=$('#ptr');if(e){e.classList.add('go');e.style.opacity=1;e.style.transform='translate(-50%,40px)'}
+ const done=()=>location.reload();
+ Promise.resolve().then(()=>navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then(r=>Promise.all(r.map(x=>x.unregister()))):0)
+ .then(()=>window.caches?caches.keys().then(k=>Promise.all(k.map(x=>caches.delete(x)))):0).then(done,done)}
+let py=null,pd=0;
+addEventListener('touchstart',e=>{py=(scrollY<=0&&e.touches.length===1&&!document.querySelector('.ov'))?e.touches[0].clientY:null;pd=0},{passive:true});
+addEventListener('touchmove',e=>{if(py===null)return;pd=e.touches[0].clientY-py;const el=$('#ptr');if(el&&pd>0&&!el.classList.contains('go')){el.style.transform='translate(-50%,'+Math.min(pd,120)*.5+'px)';el.style.opacity=Math.min(1,pd/90)}},{passive:true});
+addEventListener('touchend',()=>{const el=$('#ptr');if(py!==null&&pd>90)hardRefresh();else if(el&&!el.classList.contains('go')){el.style.opacity=0;el.style.transform='translate(-50%,0)'}py=null;pd=0});
 theme();render();shake();
 const okI=()=>document.documentElement.classList.add('icf');
 (document.fonts&&document.fonts.load?document.fonts.load('24px "Material Symbols Outlined"','star').then(okI,okI):Promise.resolve().then(okI));
